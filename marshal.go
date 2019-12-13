@@ -85,14 +85,14 @@ func marshalStruct(val reflect.Value, info *reflectutils.SStructFieldInfo) JSONO
 
 func struct2JSONPairs(val reflect.Value) []JSONPair {
 	objPairs := make([]JSONPair, 0)
-	fields := reflectutils.FetchStructFieldValueSet(val)
-	for i := 0; i < len(fields); i += 1 {
-		jsonInfo := fields[i].Info
+	fieldset := reflectutils.FetchStructFieldValueSetV2(val)
+	for _, value := range fieldset.Values {
+		jsonInfo := fieldset.Infos[value.Index]
 		if jsonInfo.Ignore {
 			continue
 		}
 		key := jsonInfo.MarshalName()
-		val := marshalValue(fields[i].Value, &jsonInfo)
+		val := marshalValue(value.Value, &jsonInfo)
 		if val != nil && val != JSONNull {
 			objPair := JSONPair{key: key, val: val}
 			objPairs = append(objPairs, objPair)

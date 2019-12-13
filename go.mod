@@ -13,3 +13,5 @@ require (
 	yunion.io/x/log v0.0.0-20190514041436-04ce53b17c6b
 	yunion.io/x/pkg v0.0.0-20190620104149-945c25821dbf
 )
+
+replace yunion.io/x/pkg => ../pkg
