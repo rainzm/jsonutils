@@ -518,7 +518,7 @@ func (this *JSONDict) unmarshalMap(val reflect.Value) error {
 }
 
 func (this *JSONDict) unmarshalStruct(val reflect.Value) error {
-	fieldValues := reflectutils.FetchStructFieldValueSetForWrite(val)
+	fieldValues := reflectutils.FetchStructFieldValueSetForWriteV2(val)
 	for k, v := range this.data {
 		fieldValue, find := fieldValues.GetValue(k)
 		if find {

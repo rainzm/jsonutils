@@ -30,7 +30,7 @@ type JSONPair struct {
 }
 
 func NewDict(objs ...JSONPair) *JSONDict {
-	dict := JSONDict{data: make(map[string]JSONObject)}
+	dict := JSONDict{data: make(map[string]JSONObject, len(objs))}
 	for _, o := range objs {
 		dict.data[o.key] = o.val
 	}
