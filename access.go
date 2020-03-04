@@ -24,14 +24,14 @@ import (
 )
 
 type JSONPair struct {
-	key string
-	val JSONObject
+	Key string
+	Val JSONObject
 }
 
 func NewDict(objs ...JSONPair) *JSONDict {
 	dict := JSONDict{data: make(map[string]JSONObject, len(objs))}
 	for _, o := range objs {
-		dict.data[o.key] = o.val
+		dict.data[o.Key] = o.Val
 	}
 	return &dict
 }

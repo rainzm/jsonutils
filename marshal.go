@@ -59,7 +59,7 @@ func marshalMap(val reflect.Value, info *reflectutils.SStructFieldInfo) JSONObje
 		key := keys[i]
 		val := marshalValue(val.MapIndex(key), nil)
 		if val != JSONNull {
-			objPairs = append(objPairs, JSONPair{key: fmt.Sprintf("%s", key), val: val})
+			objPairs = append(objPairs, JSONPair{Key: fmt.Sprintf("%s", key), Val: val})
 		}
 	}
 	dict := NewDict(objPairs...)
@@ -94,7 +94,7 @@ func struct2JSONPairs(val reflect.Value) []JSONPair {
 		key := jsonInfo.MarshalName()
 		val := marshalValue(fields[i].Value, jsonInfo)
 		if val != nil && val != JSONNull {
-			objPair := JSONPair{key: key, val: val}
+			objPair := JSONPair{Key: key, Val: val}
 			objPairs = append(objPairs, objPair)
 		}
 	}
